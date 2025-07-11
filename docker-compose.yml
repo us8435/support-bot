@@ -10,6 +10,11 @@ services:
     restart: always
     depends_on:
       - redis
+    logging:
+      driver: fluentd
+      options:
+        tag: "docker.{{.NAME}}"
+        fluentd-address: "fluentd-adywyl:24224"
     volumes:
       - .:/usr/src/app
     networks:
